@@ -35,11 +35,10 @@ MRuby::CrossBuild.new('esp32') do |conf|
     cc.flags = cc.flags.flatten.collect { |x| x.gsub('-MP', '') }
 
     cc.defines << %w(MRB_HEAP_PAGE_SIZE=64)
-    cc.defines << %w(MRB_USE_IV_SEGLIST)
     cc.defines << %w(KHASH_DEFAULT_SIZE=8)
-    cc.defines << %w(MRB_STR_BUF_MIN_SIZE=20)
     cc.defines << %w(MRB_GC_STRESS)
-    cc.defines << %w(POOL_PAGE_SIZE=256)
+    cc.defines << %w(MRB_USE_METHOD_T_STRUCT)
+    cc.defines << %w(MRB_NO_BOXING)
   end
 
   conf.cxx do |cxx|
